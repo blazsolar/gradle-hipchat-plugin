@@ -13,4 +13,4 @@ install:
   - ./gradlew install
 
 script:
-  - ./gradlew test -PnexusUsername="${NEXUS_USERNAME}" PnexusPassword="${NEXUS_PASSWORD}"
+  - ./gradlew test -PnexusUsername="${NEXUS_USERNAME}" -PnexusPassword="${NEXUS_PASSWORD}"
