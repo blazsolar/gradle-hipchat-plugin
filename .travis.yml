@@ -1,0 +1,8 @@
+language: groovy
+
+install:
+  - cd libraries/jHipChat
+  - ./gradlew install
+
+script:
+  - ./gradlew test
