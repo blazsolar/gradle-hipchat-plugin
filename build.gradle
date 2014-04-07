@@ -9,11 +9,10 @@ buildscript {
 
 apply plugin: 'groovy'
 apply plugin: 'idea'
-apply plugin: 'maven'
-apply plugin: 'nexmo'
+apply plugin: 'nexus'
 
-group 'com.wefika.gradle'
-version '0.1.0-SNAPSHOT'
+group projectGroup
+version projectVersion
 
 repositories {
     mavenCentral()
@@ -34,7 +33,7 @@ modifyPom {
     project {
         name 'Gradle HipChat plugin'
         description 'Gradle plugin that allows you to send to send messages to HipChat.'
-        url: 'https://github.com/blazsolar/gradle-hipchat-plugin'
+        url 'https://github.com/blazsolar/gradle-hipchat-plugin'
         inceptionYear '2014'
 
         scm {
