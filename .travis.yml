@@ -5,7 +5,7 @@ env:
     - secure: "omwbgccuTTatsxumOB4uGCmDFPImYeYy4C+iWbLC0/pElkTwO2zpc6No94JIMRys00BU4Ysf2XbZiaE9AiwYyl6OGqGE8Zin1QLTVTbbdLTpEshMBVd3v+Dl+3hv7qbhpHryFVp89FwkRrKxNkYMVl8UPLkh4+ubuKLGLhxjIKk="
     - secure: "OQfTtEhFz1gMD3eZYmG7Hku86cQhKfxhGzobtsy5BUvyr4hhm9a/PJzxiPhLehr6oYqPWBNFihPIflr2+J6kheh0QEW6r5Ud2EV4mLj033qI4BC9BLULgHdeYf2Gi3Cs7yqyqpaodYIf59g6OswVEvx4mj1pcpZyksxcSPTUQyc="
 
-before_instal:
+before_install:
   - export TERM=dumb
 
 install:
@@ -13,4 +13,4 @@ install:
   - ./gradlew install
 
 script:
-  - ./gradlew test --stacktrace -PnexusUsername="${NEXUS_USERNAME}" -PnexusPassword="${NEXUS_PASSWORD}"
+  - TERM=dumb ./gradlew test --stacktrace -PnexusUsername="${NEXUS_USERNAME}" -PnexusPassword="${NEXUS_PASSWORD}"
