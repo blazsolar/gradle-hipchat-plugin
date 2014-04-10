@@ -16,14 +16,14 @@ version projectVersion
 
 repositories {
     mavenCentral()
-    flatDir(dirs: 'lib')
+    mavenLocal()
 }
 
 dependencies {
 	compile gradleApi()
 	compile localGroovy()
 
-    compile 'jHipChat:jHipChat:1.0.0'
+    compile 'com.github.hipchat:jHipchat:0.0.1-SNAPSHOT'
 
 	testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.8.4'

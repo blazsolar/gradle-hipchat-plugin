@@ -35,13 +35,21 @@ import com.wefika.gradle.hipchat.tasks.SendMessageTask
 buildscript {
     repositories {
         mavenLocal()
+        maven {
+            url 'http://oss.sonatype.org/content/repositories/snapshots/'
+        }
     }
     dependencies {
         classpath 'com.wefika.gradle:gradle-hipchat-plugin:0.1.0-SNAPSHOT'
     }
 }
 
+apply plugin: 'java'
 apply plugin: 'hipchat'
+
+dependencies {
+    compile 'com.github.hipchat:jHipchat:0.0.1-SNAPSHOT'
+}
 
 hipchat {
     token = hipChatToken

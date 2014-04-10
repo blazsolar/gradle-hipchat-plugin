@@ -1,3 +1,0 @@
-[submodule "libraries/jHipChat"]
-	path = libraries/jHipChat
-	url = git://github.com/blazsolar/jHipChat.git
