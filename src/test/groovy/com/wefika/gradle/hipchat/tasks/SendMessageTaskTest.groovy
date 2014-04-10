@@ -20,4 +20,6 @@ package com.wefika.gradle.hipchat.tasks
  */
 class SendMessageTaskTest {
 
+    // TODO
+
 }
