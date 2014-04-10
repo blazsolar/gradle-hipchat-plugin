@@ -14,7 +14,7 @@ env:
 script:
   - gradle test --stacktrace -PnexusUsername="${NEXUS_USERNAME}" -PnexusPassword="${NEXUS_PASSWORD}"
 
-after_success:
-  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
-          gradle uploadArchives --stacktrace -PnexusUsername="${NEXUS_USERNAME}" -PnexusPassword="${NEXUS_PASSWORD}";
-          fi
+#after_success:
+#  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+#          gradle uploadArchives --stacktrace -PnexusUsername="${NEXUS_USERNAME}" -PnexusPassword="${NEXUS_PASSWORD}";
+#          fi
