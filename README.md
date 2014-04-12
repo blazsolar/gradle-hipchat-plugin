@@ -8,7 +8,7 @@ Gradle plugin that allows you to send to send messages to HipChat.
 Gradle HipChat plugin is using `jHipChat`library to communicate with `HipChat` api. Since `jHipChat`
 is not in maven central repository you will have to add it to your local maven repo.
 
-    git checkout git@github.com:campnic/jHipChat.git
+    git clone git@github.com:campnic/jHipChat.git
     cd jHipChat
     mvn -Dmaven.test.skip=true install
 
