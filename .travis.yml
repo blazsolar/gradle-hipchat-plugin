@@ -5,7 +5,7 @@ env:
     - TERM=dumb
 
 script:
-  - gradle test --stacktrace
+  - ./gradlew test --stacktrace
 
 #after_success:
 #  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
