@@ -6,8 +6,3 @@ env:
 
 script:
   - ./gradlew test --stacktrace
-
-#after_success:
-#  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
-#          gradle uploadArchives --stacktrace -PnexusUsername="${NEXUS_USERNAME}" -PnexusPassword="${NEXUS_PASSWORD}";
-#          fi
