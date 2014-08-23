@@ -27,7 +27,7 @@ class HipChatPluginTest {
     @Test
     public void testAddPlugin() {
         Project project = ProjectBuilder.builder().build();
-        project.apply plugin: 'hipchat'
+        project.apply plugin: 'com.github.blazsolar.hipchat'
     }
 
 }
