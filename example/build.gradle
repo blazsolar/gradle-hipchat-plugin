@@ -10,17 +10,13 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven {
-            url 'http://oss.sonatype.org/content/repositories/snapshots/'
-        }
     }
     dependencies {
-        classpath 'com.wefika.gradle:gradle-hipchat-plugin:0.1.1-SNAPSHOT'
+        classpath 'com.github.blazsolar.gradle:gradle-hipchat-plugin:0.2.0-SNAPSHOT'
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'hipchat'
+apply plugin: 'com.github.blazsolar.hipchat'
 
 hipchat {
     token = hipChatToken
@@ -31,4 +27,8 @@ task testMessage(type: com.github.blazsolar.gradle.hipchat.tasks.SendMessageTask
     userId = hipChatUserId
     message = "Test message"
     userName = null
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
 }
