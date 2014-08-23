@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wefika.gradle.hipchat.tasks
+package com.github.blazsolar.gradle.hipchat.tasks
 
 import com.github.hipchat.api.HipChat
 import com.github.hipchat.api.Room
@@ -28,7 +28,7 @@ import org.gradle.api.tasks.TaskAction
  *
  * Created by blazsolar on 07/04/14.
  */
-class SendMessageTask extends DefaultTask {
+public class SendMessageTask extends DefaultTask {
 
     /** HipChat room id to with message should be sent */
     @Input

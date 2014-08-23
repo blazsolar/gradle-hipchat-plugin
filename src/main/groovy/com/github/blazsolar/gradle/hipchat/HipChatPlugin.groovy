@@ -14,24 +14,22 @@
  * limitations under the License.
  */
 
-package com.wefika.gradle.hipchat.dsl
-
+package com.github.blazsolar.gradle.hipchat
+import com.github.blazsolar.gradle.hipchat.dsl.HipChatPluginExtension
+import org.gradle.api.Plugin
 import org.gradle.api.Project
 
 /**
- * Plugin extension file. Token should always be defined.
+ * HipChat plugin
  *
  * Created by blazsolar on 07/04/14.
  */
-class HipChatPluginExtension {
+class HipChatPlugin implements Plugin<Project> {
 
-    /** HipChat token to communicate with API. */
-    String token;
+    @Override
+    void apply(Project project) {
 
-    /**
-     * FIXME: Needed for test to run
-     */
-    HipChatPluginExtension(Project project) {
-        token = "test_token";
+        project.extensions.create("hipchat", HipChatPluginExtension, project);
+
     }
 }

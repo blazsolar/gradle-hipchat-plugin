@@ -47,7 +47,7 @@ Java plugin has to be added so we can add `jHipChat` from local maven repo
     }
 
 ### Import task
-    import com.wefika.gradle.hipchat.tasks.SendMessageTask
+    import com.github.blazsolar.gradle.hipchat.tasks.SendMessageTask
 
 ### Add task
     task messageTask(type: SendMessageTask) {
