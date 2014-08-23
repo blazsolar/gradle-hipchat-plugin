@@ -52,6 +52,14 @@ artifacts {
     published javadocJar
 }
 
+if (!hasProperty(bintrayUser)) {
+    ext.bintrayUser = ""
+}
+
+if (!hasProperty(bintrayKey)) {
+    ext.bintrayKey = ""
+}
+
 bintray {
     user = bintrayUser
     key = bintrayKey
