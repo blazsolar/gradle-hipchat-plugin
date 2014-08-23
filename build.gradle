@@ -52,11 +52,11 @@ artifacts {
     published javadocJar
 }
 
-if (!hasProperty(bintrayUser)) {
+if (!project.hasProperty("bintrayUser")) {
     ext.bintrayUser = ""
 }
 
-if (!hasProperty(bintrayKey)) {
+if (!project.hasProperty("bintrayKey")) {
     ext.bintrayKey = ""
 }
 
