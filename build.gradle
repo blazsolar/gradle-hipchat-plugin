@@ -1,15 +1,16 @@
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
-        classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.5'
     }
 }
 
 apply plugin: 'groovy'
 apply plugin: 'idea'
-apply plugin: 'nexus'
+apply plugin: 'maven'
+apply plugin: 'com.jfrog.bintray'
 
 group projectGroup
 version projectVersion
@@ -20,51 +21,69 @@ repositories {
 }
 
 dependencies {
-	compile gradleApi()
-	compile localGroovy()
+    compile localGroovy()
+    compile gradleApi()
 
-    compile 'com.github.hipchat:jHipchat:0.0.1-SNAPSHOT'
+    compile 'commons-io:commons-io:2.1'
+    compile 'org.codehaus.jackson:jackson-core-asl:1.9.5'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.5'
 
 	testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.8.4'
 }
 
-modifyPom {
-    project {
-        name 'Gradle HipChat plugin'
-        description 'Gradle plugin that allows you to send to send messages to HipChat.'
-        url 'https://github.com/blazsolar/gradle-hipchat-plugin'
-        inceptionYear '2014'
-
-        scm {
-            url 'https://github.com/blazsolar/gradle-hipchat-plugin'
-            connection 'scm:https://blazsolar@github.com/blazsolar/gradle-hipchat-plugin.git'
-            developerConnection 'scm:git://github.com/blazsolar/gradle-hipchat-plugin.git'
-        }
-
-        licenses {
-            license {
-                name 'The Apache Software License, Version 2.0'
-                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                distribution 'repo'
-            }
-        }
-
-        developers {
-            developer {
-                id 'blazsolar'
-                name 'Blaz Solar'
-                email 'solarblaz@gmail.com'
-            }
-        }
-    }
+configurations {
+    published
 }
 
-nexus {
-    attachSources = true
-    attachTests = true
-    attachJavadoc = true
-    sign = true
-    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
-    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+// Add the sourceJars to non-extractor modules
+artifacts {
+    published sourceJar
+    published javadocJar
+}
+
+if (!project.hasProperty("bintrayUser")) {
+    ext.bintrayUser = ""
+}
+
+if (!project.hasProperty("bintrayKey")) {
+    ext.bintrayKey = ""
+}
+
+bintray {
+    user = bintrayUser
+    key = bintrayKey
+
+    configurations = ['published', 'archives']
+
+    pkg {
+        repo='maven'
+        name=projectName
+        desc='Gradle plugin that allows you to send messages to HipChat.'
+        websiteUrl='https://github.com/blazsolar/gradle-hipchat-plugin'
+        issueTrackerUrl='https://github.com/blazsolar/gradle-hipchat-plugin/issues'
+        vcsUrl='https://blazsolar@github.com/blazsolar/gradle-hipchat-plugin.git'
+        licenses=['Apache-2.0']
+        labels=['hipchat']
+
+        version {
+            name=projectVersion
+            attributes=['gradle-plugin':'com.github.blazsolar.hipchat:' + projectGroup + ':' + projectName]
+        }
+    }
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
 }

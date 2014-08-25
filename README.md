@@ -2,55 +2,37 @@
 
 Gradle plugin that allows you to send to send messages to HipChat.
 
+[ ![Download](https://api.bintray.com/packages/blazsolar/maven/gradle-hipchat-plugin/images/download.png) ](https://bintray.com/blazsolar/maven/gradle-hipchat-plugin/_latestVersion)
+[![Build Status](https://travis-ci.org/blazsolar/gradle-hipchat-plugin.svg?branch=develop)](https://travis-ci.org/blazsolar/gradle-hipchat-plugin)
+
 ## Usage
 
-### jHipChat
-Gradle HipChat plugin is using `jHipChat`library to communicate with `HipChat` api. Since `jHipChat`
-is not in maven central repository you will have to add it to your local maven repo.
+## Apply plugin
 
-    git clone git@github.com:campnic/jHipChat.git
-    cd jHipChat
-    mvn -Dmaven.test.skip=true install
-
-This will install `jHipChat` library to your local maven repository without running test. If you want
-to run test before installing to maven repo just execute `mvn install` command. But you will have to
-set hipchat token, room id and user id for tests to run successfully.
-
-### Dependencies
+### Gradle 2.1 and later
+    plugins {
+        id "com.github.blazsolar.hipchat" version "<version>"
+    }
+    
+### Gradle 2.0 or older
     buildscript {
         repositories {
-            mavenCentral()
+            jcentral()
         }
         dependencies {
-            classpath 'com.wefika.gradle:gradle-hipchat-plugin:0.1.0'
+            classpath 'com.github.blazsolar.gradle:gradle-hipchat-plugin:<version>'
         }
     }
 
-### Apply plugin
-    apply plugin: 'java'
     apply plugin: 'hipchat'
-
-Java plugin has to be added so we can add `jHipChat` from local maven repo
-
-### jHipChat dependencies
-    repositories {
-        mavenLocal()
-    }
-
-    dependencies {
-        compile 'com.github.hipchat:jHipchat:0.0.1-SNAPSHOT'
-    }
 
 ### Configuration
     hipchat {
         token = "<HipChat token>"
     }
 
-### Import task
-    import com.wefika.gradle.hipchat.tasks.SendMessageTask
-
 ### Add task
-    task messageTask(type: SendMessageTask) {
+    task messageTask(type: com.github.blazsolar.gradle.hipchat.tasks.SendMessageTask) {
         roomId = "<HipChat room id>"
         userId = "<HipChat user id>"
         message = "<Message>"

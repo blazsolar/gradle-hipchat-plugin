@@ -14,20 +14,12 @@
  * limitations under the License.
  */
 
-package com.wefika.gradle.hipchat
-
-import org.gradle.api.Project
-import org.gradle.testfixtures.ProjectBuilder
-import org.junit.Test
+package com.github.blazsolar.gradle.hipchat.tasks
 /**
  * Created by blazsolar on 07/04/14.
  */
-class HipChatPluginTest {
+class SendMessageTaskTest {
 
-    @Test
-    public void testAddPlugin() {
-        Project project = ProjectBuilder.builder().build();
-        project.apply plugin: 'com.github.blazsolar.hipchat'
-    }
+    // TODO
 
 }

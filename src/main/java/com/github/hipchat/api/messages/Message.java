@@ -1,6 +1,6 @@
-/*
- * Copyright 2014 Blaž Šolar
- *
+/*   
+ * Copyright [2012] [Nicholas Campion]
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,24 +12,25 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * 
+ * Authored by Nick Campion campnic@gmail.com
  */
 
-package com.wefika.gradle.hipchat
-import com.wefika.gradle.hipchat.dsl.HipChatPluginExtension
-import org.gradle.api.Plugin
-import org.gradle.api.Project
+package com.github.hipchat.api.messages;
 
-/**
- * HipChat plugin
- *
- * Created by blazsolar on 07/04/14.
- */
-class HipChatPlugin implements Plugin<Project> {
+import com.github.hipchat.api.Room;
+import com.github.hipchat.api.UserId;
 
-    @Override
-    void apply(Project project) {
-
-        project.extensions.create("hipchat", HipChatPluginExtension, project);
-
+public interface Message
+{
+    public enum Color
+    {
+        YELLOW, RED, GREEN, PURPLE, RANDOM;
     }
+
+    public UserId getSender();
+
+    public String getText();
+
+    public Room getRoom();
 }

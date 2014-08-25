@@ -1,6 +1,6 @@
-/*
- * Copyright 2014 Blaž Šolar
- *
+/*   
+ * Copyright [2012] [Nicholas Campion]
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,22 +12,36 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * 
+ * Authored by Nick Campion campnic@gmail.com
  */
 
-package com.wefika.gradle.hipchat
+package com.github.hipchat.api;
 
-import org.gradle.api.Project
-import org.gradle.testfixtures.ProjectBuilder
-import org.junit.Test
-/**
- * Created by blazsolar on 07/04/14.
- */
-class HipChatPluginTest {
+public class RoomId implements Comparable<RoomId>
+{
+    private String id;
+    private HipChat origin;
 
-    @Test
-    public void testAddPlugin() {
-        Project project = ProjectBuilder.builder().build();
-        project.apply plugin: 'com.github.blazsolar.hipchat'
+    protected RoomId(String id, HipChat origin)
+    {
+        this.id = id;
+        this.origin = origin;
+    }
+
+    protected HipChat getOrigin()
+    {
+        return origin;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public int compareTo(RoomId o)
+    {
+        return this.id.compareTo(o.id);
     }
 
 }
