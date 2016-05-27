@@ -36,8 +36,8 @@ public class HipChat
 
     public static JsonFactory JSON_FACTORY = new JsonFactory();
 
-	private String				authToken		= null;
-	private String				apiBase			= HipChatConstants.DEFAULT_API_BASE;
+    private String authToken = null;
+	private String apiBase = HipChatConstants.DEFAULT_API_BASE;
 
     public HipChat(String authToken)
     {
