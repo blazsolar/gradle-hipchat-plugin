@@ -60,6 +60,10 @@ public class SendMessageTask extends DefaultTask {
 
         HipChat hipChat = new HipChat(project.hipchat.token);
 
+		if (project.hipchat.apiBase != null) {
+			hipChat.setApiBase(project.hipchat.apiBase);
+		}
+
         if (userName == null) {
             userName = hipChat.getUser(UserId.create(userId)).getName();
         }

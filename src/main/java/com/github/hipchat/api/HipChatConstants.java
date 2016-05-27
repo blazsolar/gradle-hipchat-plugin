@@ -21,7 +21,7 @@ package com.github.hipchat.api;
 public interface HipChatConstants
 {
     public static final String JSON_FORMAT = "json";
-    public static final String API_BASE = "https://api.hipchat.com/v1/";
+    public static final String DEFAULT_API_BASE = "https://api.hipchat.com/v1/";
 
     // API Operation URL components
     public static final String ROOMS_LIST = "rooms/list";

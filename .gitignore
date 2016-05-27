@@ -9,3 +9,6 @@ atlassian-ide-plugin.xml
 # Gradle
 .gradle
 build/
+.classpath
+.project
+.settings/org.eclipse.buildship.core.prefs

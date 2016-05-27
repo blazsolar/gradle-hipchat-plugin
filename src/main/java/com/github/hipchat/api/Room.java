@@ -167,7 +167,7 @@ public class Room extends RoomId
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.ROOMS_HISTORY + query);
+            URL requestUrl = new URL(getOrigin().getApiBase() + HipChatConstants.ROOMS_HISTORY + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoInput(true);
             input = connection.getInputStream();
@@ -236,7 +236,7 @@ public class Room extends RoomId
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.ROOMS_MESSAGE + query);
+            URL requestUrl = new URL(getOrigin().getApiBase() + HipChatConstants.ROOMS_MESSAGE + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoOutput(true);
 

@@ -27,6 +27,7 @@ class HipChatPluginExtension {
 
     /** HipChat token to communicate with API. */
     String token;
+    String apiBase;
 
     /**
      * FIXME: Needed for test to run
