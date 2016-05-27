@@ -36,7 +36,8 @@ public class HipChat
 
     public static JsonFactory JSON_FACTORY = new JsonFactory();
 
-    private String authToken = null;
+	private String				authToken		= null;
+	private String				apiBase			= HipChatConstants.DEFAULT_API_BASE;
 
     public HipChat(String authToken)
     {
@@ -48,6 +49,14 @@ public class HipChat
         return this.authToken;
     }
 
+	public String getApiBase() {
+		return apiBase;
+	}
+
+	public void setApiBase(String apiBase) {
+		this.apiBase = apiBase;
+	}
+
     public List<Room> listRooms()
     {
         String query = String.format(HipChatConstants.ROOMS_LIST_QUERY_FORMAT, HipChatConstants.JSON_FORMAT, authToken);
@@ -58,7 +67,7 @@ public class HipChat
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.ROOMS_LIST + query);
+            URL requestUrl = new URL(getApiBase() + HipChatConstants.ROOMS_LIST + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoInput(true);
             input = connection.getInputStream();
@@ -128,7 +137,7 @@ public class HipChat
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.ROOMS_CREATE + query);
+            URL requestUrl = new URL(getApiBase() + HipChatConstants.ROOMS_CREATE + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoOutput(true);
 
@@ -176,7 +185,7 @@ public class HipChat
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.ROOMS_DELETE + query);
+            URL requestUrl = new URL(getApiBase() + HipChatConstants.ROOMS_DELETE + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoOutput(true);
 
@@ -216,7 +225,7 @@ public class HipChat
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.ROOMS_SHOW + query);
+            URL requestUrl = new URL(getApiBase() + HipChatConstants.ROOMS_SHOW + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoInput(true);
             input = connection.getInputStream();
@@ -309,7 +318,7 @@ public class HipChat
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.USERS_CREATE + query);
+            URL requestUrl = new URL(getApiBase() + HipChatConstants.USERS_CREATE + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoOutput(true);
 
@@ -413,7 +422,7 @@ public class HipChat
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.USERS_UPDATE + query);
+            URL requestUrl = new URL(getApiBase() + HipChatConstants.USERS_UPDATE + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoOutput(true);
 
@@ -467,7 +476,7 @@ public class HipChat
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.USERS_DELETE + query);
+            URL requestUrl = new URL(getApiBase() + HipChatConstants.USERS_DELETE + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoOutput(true);
 
@@ -507,7 +516,7 @@ public class HipChat
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.USERS_LIST + query);
+            URL requestUrl = new URL(getApiBase() + HipChatConstants.USERS_LIST + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoInput(true);
             input = connection.getInputStream();
@@ -538,7 +547,7 @@ public class HipChat
 
         try
         {
-            URL requestUrl = new URL(HipChatConstants.API_BASE + HipChatConstants.USERS_SHOW + query);
+            URL requestUrl = new URL(getApiBase() + HipChatConstants.USERS_SHOW + query);
             connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setDoInput(true);
             input = connection.getInputStream();
